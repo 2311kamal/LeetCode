@@ -29,26 +29,64 @@
 // };
 
 
-//////////////////////  OPTIMAL SOLUTION //////////////////////////  O(n*logn)
+//////////////////////  Better //////////////////////////  O(n*logn)
 
+
+// class Solution
+// {
+// public:
+//     string longestCommonPrefix(vector<string> &v)
+//     {
+//         string ans = "";
+//         sort(v.begin(), v.end());
+//         int n = v.size();
+//         string first = v[0], last = v[n - 1];
+//         for (int i = 0; i < min(first.size(), last.size()); i++)
+//         {
+//             if (first[i] != last[i])
+//             {
+//                 return ans;
+//             }
+//             ans += first[i];
+//         }
+//         return ans;
+//     }
+// };
+
+////////////////////////  OPTIMAL SOLUTION  //////////////////////  O(n) It saves the time of sorting
 
 class Solution
 {
 public:
-    string longestCommonPrefix(vector<string> &v)
+    string longestCommonPrefix(vector<string> &str)
     {
-        string ans = "";
-        sort(v.begin(), v.end());
-        int n = v.size();
-        string first = v[0], last = v[n - 1];
-        for (int i = 0; i < min(first.size(), last.size()); i++)
+
+        string mini = str[0], max=str[0];
+
+        for (int i = 0; i < str.size(); i++)
         {
-            if (first[i] != last[i])
+
+            if (str[i] < mini)
             {
-                return ans;
+                mini = str[i];
             }
-            ans += first[i];
+           
+            if(str[i]>max){
+                max=str[i];
+            }
         }
+
+        int n = min(mini.size(), max.size());
+        
+        string ans = "";
+        for (int i = 0; i < n; i++)
+        {
+
+            if (mini[i] != max[i])
+                break;
+            ans += mini[i];
+        }
+
         return ans;
     }
 };
