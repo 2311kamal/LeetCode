@@ -1,3 +1,5 @@
+///////////////////////  SOLUTION 1  ///////////////////////
+
 // class Solution {
 // public:
 //     bool isPalindrome(int x) {
@@ -8,7 +10,10 @@
 //     }
 // };
 
+// BOTH THE SOLUTIONS WORK PERFECTLY FINE
 
+
+///////////////////////   SOLUTION 2   ///////////////////////
 
 class Solution
 {
