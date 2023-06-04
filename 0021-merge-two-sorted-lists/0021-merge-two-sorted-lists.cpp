@@ -34,39 +34,45 @@ public:
     ListNode *mergeTwoLists(ListNode *h1, ListNode *h2)
     {
 
-        ListNode *h=NULL;
-        
-        if(h1!=NULL && h2!=NULL){
-        if (h1->val > h2->val)
+        ListNode *h = NULL;
+
+        if (h1 != NULL && h2 != NULL)
         {
-            h = h2;
-            h2 = h2->next;
+            if (h1->val > h2->val)
+            {
+                h = h2;
+                h2 = h2->next;
+            }
+            else
+            {
+                h = h1;
+                h1 = h1->next;
+            }
         }
-        else
+
+        else if (h1 == NULL && h2 != NULL)
         {
-            h = h1;
-            h1 = h1->next;
-        }}
+            return h2;
+        }
+        else if (h2 == NULL && h1 != NULL)
+        {
+            return h1;
+        }
 
-        
-       else if(h1==NULL && h2!=NULL){return h2;}
-      else  if(h2==NULL && h1!=NULL){return h1;}
-
-        
         ListNode *t = h;
 
-        while (h1!= NULL && h2!= NULL)
+        while (h1 != NULL && h2 != NULL)
         {
 
             t->next = small(h1, h2);
-            t=t->next;
+            t = t->next;
         }
-        if (h1!= NULL)
+        if (h1 != NULL)
         {
 
             t->next = h1;
         }
-        if (h2!= NULL)
+        if (h2 != NULL)
         {
             t->next = h2;
         }
